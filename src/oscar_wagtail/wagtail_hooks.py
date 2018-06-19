@@ -14,10 +14,16 @@ def editor_js():
         """
         <script src="{0}{1}"></script>
         <script>window.chooserUrls.productChooser = '{2}';</script>
+
+        <script src="{3}{4}"></script>
+        <script>window.chooserUrls.offerChooser = '{5}';</script>
         """,
         settings.STATIC_URL,
         'oscar_wagtail/js/product-chooser.js',
-        urlresolvers.reverse('oscar_wagtail:product_choose')
+        urlresolvers.reverse('oscar_wagtail:product_choose'),
+        settings.STATIC_URL,
+        'oscar_wagtail/js/offer-chooser.js',
+        urlresolvers.reverse('oscar_wagtail:offer_choose'),
     )
 
 

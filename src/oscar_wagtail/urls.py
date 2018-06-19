@@ -8,4 +8,10 @@ urlpatterns = [
 
     url(r'^product-choose/(\d+)/$',
         views.product_chosen, name='product_chosen'),
+
+    url(r'^offer-choose/$',
+        views.offer_choose, name='offer_choose'),
+
+    url(r'^offer-choose/(\d+)/$',
+        views.offer_chosen, name='offer_chosen'),
 ]

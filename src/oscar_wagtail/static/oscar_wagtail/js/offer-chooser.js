@@ -1,4 +1,5 @@
-function createProductChooser(id, contentType) {
+
+function createOfferChooser(id, contentType) {
     var chooserElement = $('#' + id + '-chooser');
     var docTitle = chooserElement.find('.title');
     var input = $('#' + id);
@@ -6,13 +7,13 @@ function createProductChooser(id, contentType) {
 
     $('.action-choose', chooserElement).click(function() {
         ModalWorkflow({
-            url: window.chooserUrls.productChooser,
+            url: window.chooserUrls.offerChooser,
             responses: {
-                productChosen: function(productData) {
-                    input.val(productData.id);
-                    docTitle.text(productData.string);
+                offerChosen: function(offerData) {
+                    input.val(offerData.id);
+                    docTitle.text(offerData.string);
                     chooserElement.removeClass('blank');
-                    editLink.attr('href', productData.edit_link);
+                    editLink.attr('href', offerData.edit_link);
                 }
             }
         });
@@ -23,4 +24,3 @@ function createProductChooser(id, contentType) {
         chooserElement.addClass('blank');
     });
 }
-

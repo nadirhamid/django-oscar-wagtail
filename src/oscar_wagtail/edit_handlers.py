@@ -1,7 +1,7 @@
 from django.utils.html import escape
-from wagtail.wagtailadmin.edit_handlers import BaseChooserPanel
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.rich_text import PageLinkHandler as _PageLinkHandler
+from wagtail.admin.edit_handlers import BaseChooserPanel
+from wagtail.core.models import Page
+from wagtail.core.rich_text.pages import PageLinkHandler as _PageLinkHandler
 
 from oscar_wagtail import widgets
 
@@ -25,6 +25,31 @@ class ProductChooserPanel(object):
 
     def bind_to_model(self, model):
         return type(str('_ProductChooserPanel'), (BaseProductChooserPanel,), {
+            'model': model,
+            'field_name': self.field_name,
+            'product_type': self.product_type,
+        })
+
+
+class BaseOfferChooserPanel(BaseChooserPanel):
+    object_type_name = "offer"
+
+    _target_content_type = None
+
+    @classmethod
+    def widget_overrides(cls):
+        return {
+            cls.field_name: widgets.AdminOfferChooser()
+        }
+
+
+class OfferChooserPanel(object):
+    def __init__(self, field_name, product_type=None):
+        self.field_name = field_name
+        self.product_type = product_type
+
+    def bind_to_model(self, model):
+        return type(str('_OfferChooserPanel'), (BaseOfferChooserPanel,), {
             'model': model,
             'field_name': self.field_name,
             'product_type': self.product_type,
