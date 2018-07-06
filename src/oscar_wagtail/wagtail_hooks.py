@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core import urlresolvers
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.html import format_html
 from wagtail.wagtailadmin.menu import MenuItem
 from wagtail.wagtailcore import hooks
@@ -20,10 +20,10 @@ def editor_js():
         """,
         settings.STATIC_URL,
         'oscar_wagtail/js/product-chooser.js',
-        urlresolvers.reverse('oscar_wagtail:product_choose'),
+        reverse('oscar_wagtail:product_choose'),
         settings.STATIC_URL,
         'oscar_wagtail/js/offer-chooser.js',
-        urlresolvers.reverse('oscar_wagtail:offer_choose'),
+        reverse('oscar_wagtail:offer_choose'),
     )
 
 
