@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.core import urlresolvers
 from django.urls import reverse
 from django.utils.html import format_html
 from wagtail.wagtailadmin.menu import MenuItem
